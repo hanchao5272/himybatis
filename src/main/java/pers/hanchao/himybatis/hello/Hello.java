@@ -32,10 +32,6 @@ public class Hello {
         }
     }
 
-    public static SqlSessionFactory getSqlSessionFactory() {
-        return sqlSessionFactory;
-    }
-
     /**
      * <p>读取id=99999的试题信息</p>
      * @author hanchao 2018/1/26 19:09
@@ -44,7 +40,7 @@ public class Hello {
         //创建SqlSession
         SqlSession sqlSession = sqlSessionFactory.openSession();
         try{
-            //执行查询方法
+            //执行查询方法：通过Question.xml找到SQL语句
             Question question = sqlSession.selectOne("pers.hanchao.himybatis.hello.QuestionMapper.GetQuestionById",99999);
             if (null != question){
                 //输出结果

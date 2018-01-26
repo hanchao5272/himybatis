@@ -5,7 +5,10 @@
 <configuration>
     <!--类型依赖：配置Java类对应的别名，与Question.xml中的resultType相互对应-->
     <typeAliases>
-        <typeAlias alias="Question" type="pers.hanchao.himybatis.hello.Question"/>
+        <!--通过纯XML的配置方式-->
+        <typeAlias type="pers.hanchao.himybatis.hello.Question" alias="Question"/>
+        <!--通过XML+IDao的配置方式，调用方式更方便-->
+        <typeAlias type="pers.hanchao.himybatis.ihello.Problem" alias="Problem"/>
     </typeAliases>
     <!--mybatis的数据库连接-->
     <environments default="dev">
@@ -24,5 +27,6 @@
     <!--映射xml的路径配置-->
     <mappers>
         <mapper resource="mybatis-mappers/Question.xml"/>
+        <mapper resource="mybatis-mappers/Problem.xml"/>
     </mappers>
 </configuration>
