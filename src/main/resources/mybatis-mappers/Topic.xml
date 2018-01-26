@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--MyBatis的分配置文件，分别对应每个实体，用来配置SQL操作及SQL语句-->
+<!--namespace，定义这个映射的命名域,这里指向Dao层接口-->
+<!--先开发ITopicDAO，在开发Topic.xml-->
+<mapper namespace="pers.hanchao.himybatis.curd.ITopicDAO">
+    <!--新增一个话题-->
+    <insert id="insertTopic" parameterType="Topic">
+        INSERT INTO `topic`(id,title,score,answer) VALUE(#{id},#{title},#{score},#{answer})
+    </insert>
+    <!--修改一个话题-->
+    <update id="updateTopic" parameterType="Topic">
+        UPDATE `topic` SET title = #{title},score = #{score},answer = #{answer} WHERE id = #{id}
+    </update>
+    <!--删除一个话题-->
+    <delete id="deleteTopic" parameterType="Integer">
+        DELETE FROM `topic` WHERE id = #{id}
+    </delete>
+    <!--查询一个话题-->
+    <select id="queryTopicById" parameterType="Integer" resultType="Topic">
+        SELECT * FROM `topic` WHERE id = #{id}
+    </select>
+    <!--查询全部话题-->
+    <select id="queryTopicList" resultType="Topic">
+        SELECT * FROM `topic`
+    </select>
+</mapper>

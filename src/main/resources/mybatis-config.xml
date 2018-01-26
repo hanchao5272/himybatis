@@ -9,6 +9,8 @@
         <typeAlias type="pers.hanchao.himybatis.hello.Question" alias="Question"/>
         <!--通过XML+IDao的配置方式，调用方式更方便-->
         <typeAlias type="pers.hanchao.himybatis.ihello.Problem" alias="Problem"/>
+        <!--通过XML+IDAO的配置方式，实现单表的增删改查-->
+        <typeAlias type="pers.hanchao.himybatis.curd.Topic" alias="Topic"/>
     </typeAliases>
     <!--mybatis的数据库连接-->
     <environments default="dev">
@@ -28,5 +30,6 @@
     <mappers>
         <mapper resource="mybatis-mappers/Question.xml"/>
         <mapper resource="mybatis-mappers/Problem.xml"/>
+        <mapper resource="mybatis-mappers/Topic.xml"/>
     </mappers>
 </configuration>
