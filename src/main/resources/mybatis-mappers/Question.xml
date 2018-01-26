@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--MyBatis的分配置文件，分别对应每个实体，用来配置SQL操作及SQL语句-->
+<!--namespace，定义这个映射的命名域-->
+<mapper namespace="pers.hanchao.himybatis.hello.QuestionMapper">
+    <!--查询语句用select标签-->
+    <select id="GetQuestionById" parameterType="int" resultType="Question">
+        SELECT * FROM `question` WHERE id = #{id}
+    </select>
+</mapper>
