@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--MyBatis的分配置文件，分别对应每个实体，用来配置SQL操作及SQL语句-->
+<!--namespace，定义这个映射的命名域,这里指向Dao层接口-->
+<mapper namespace="pers.hanchao.himybatis.one2many.IPersonDAO">
+    <!--注意这里是resultMap-->
+    <select id="queryPersonById" parameterType="Integer" resultMap="personExperienceMap">
+        SELECT psn.*,exp.* FROM `person` psn LEFT JOIN `experience` exp ON psn.person_id = exp.person_id WHERE psn.person_id = #{id}
+    </select>
+    <!--注意上面的返回对象resultMap指向这个id；Person是数据模型    -->
+    <resultMap id="personExperienceMap" type="Person">
+        <!--property是对象里的字段名，column是数据库中的字段名-->
+        <result property="id" column="person_id"/>
+        <result property="name" column="name"/>
+        <result property="age" column="age"/>
+        <!--ofType是集合元素的类型，column是指外键字段-->
+        <collection property="experienceList" ofType="pers.hanchao.himybatis.one2many.Experience" column="person_id">
+            <!--id表示主键-->
+            <result property="id" column="experience_id"/>
+            <result property="company" column="company"/>
+            <result property="position" column="position"/>
+        </collection>
+    </resultMap>
+</mapper>
