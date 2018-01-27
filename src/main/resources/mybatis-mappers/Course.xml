@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--MyBatis的分配置文件，分别对应每个实体，用来配置SQL操作及SQL语句-->
+<!--namespace，定义这个映射的命名域,这里指向Dao层接口-->
+<mapper namespace="pers.hanchao.himybatis.many2many.ICourseDAO">
+    <!--插入新的选修课-->
+    <insert id="insertCourse" parameterType="Course">
+        INSERT INTO `course`(course_id,name,score) VALUES (#{id},#{name},#{score})
+    </insert>
+    <!--根据id查询选修课新-->
+    <select id="queryCourseById" parameterType="Integer" resultMap="courseStudentMap">
+        SELECT * FROM `course` WHERE course_id = #{id}
+    </select>
+    <resultMap id="courseStudentMap" type="Course">
+        <!--property:Java中的字段，column:表中的字段-->
+        <result property="id" column="course_id"/>
+        <!--property与column相同的没必要配置-->
+        <!--<result property="name" column="name"/>-->
+        <!--<result property="score" column="score"/>-->
+        <!--这里是1对多关系，这里的Column是在queryStudentByCourseId里的查询列-->
+        <collection property="studentList" column="course_id"
+                    select="pers.hanchao.himybatis.many2many.IStudentCourseDAO.queryStudentByCourseId"/>
+    </resultMap>
+</mapper>

@@ -47,6 +47,8 @@ public class Hello {
                 LOGGER.info(question.toString());
             }
         }finally {
+            //提交,因为是查询，务必要
+            //sqlSession.commit();
             //关闭SqlSession
             sqlSession.close();
         }

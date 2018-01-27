@@ -38,6 +38,9 @@ public class ExperienceApp {
             LOGGER.info(experience.toString());
             LOGGER.info(experience.getPerson().toString());
         }finally {
+            //提交
+            sqlSession.commit();
+            //关闭连接
             sqlSession.close();
         }
     }

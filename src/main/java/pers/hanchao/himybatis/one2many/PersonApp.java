@@ -54,6 +54,9 @@ public class PersonApp {
             LOGGER.info(person1.toString());
             showExperience(person1.getExperienceList());
         }finally {
+            //提交
+            sqlSession.commit();
+            //关闭连接
             sqlSession.close();
         }
     }

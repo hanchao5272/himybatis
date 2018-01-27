@@ -16,6 +16,10 @@
         <typeAlias type="pers.hanchao.himybatis.one2many.Experience" alias="Experience"/>
         <!--多对一实例-->
         <!--many2one包里的Person和Experience没有在这里配置，应为在Experience.xml里直接通过全类名进行的调用，而非别名-->
+        <!--多对多实例-->
+        <typeAlias type="pers.hanchao.himybatis.many2many.Student" alias="Student"/>
+        <typeAlias type="pers.hanchao.himybatis.many2many.Course" alias="Course"/>
+        <typeAlias type="pers.hanchao.himybatis.many2many.StudentCourse" alias="StudentCourse"/>
     </typeAliases>
     <!--mybatis的数据库连接-->
     <environments default="dev">
@@ -40,5 +44,9 @@
         <mapper resource="mybatis-mappers/Person.xml"/>
         <!--多对一实例-->
         <mapper resource="mybatis-mappers/Experience.xml"/>
+        <!--多对多实例-->
+        <mapper resource="mybatis-mappers/Student.xml"/>
+        <mapper resource="mybatis-mappers/Course.xml"/>
+        <mapper resource="mybatis-mappers/StudentCourse.xml"/>
     </mappers>
 </configuration>

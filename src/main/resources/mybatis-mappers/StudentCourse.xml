@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--MyBatis的分配置文件，分别对应每个实体，用来配置SQL操作及SQL语句-->
+<!--namespace，定义这个映射的命名域,这里指向Dao层接口-->
+<mapper namespace="pers.hanchao.himybatis.many2many.IStudentCourseDAO">
+    <!--新增一条选修记录-->
+    <insert id="insertStudentCourse" parameterType="StudentCourse">
+        INSERT INTO `student_course`(student_id,course_id) VALUES (#{studentId},#{courseId})
+    </insert>
+
+    <!--根据学生id，查询这个学生所有的选修课信息-->
+    <select id="queryCourseByStudentId" resultMap="courseByStudentIdMap" parameterType="Integer">
+        SELECT cos.*,sc.course_id
+        FROM `course` cos,`student_course` sc
+        WHERE cos.course_id = sc.course_id
+        AND sc.student_id = #{student_id}
+    </select>
+    <resultMap id="courseByStudentIdMap" type="Course">
+        <result property="id" column="course_id"/>
+        <!--property与column相同的没必要配置-->
+        <!--<result property="name" column="name"/>-->
+        <!--<result property="score" column="score"/>-->
+    </resultMap>
+
+    <!--根据选修课id,查询选修此选修课的所有学生信息-->
+    <select id="queryStudentByCourseId" resultMap="studentByCourseMap" parameterType="Integer">
+        SELECT std.*,sc.student_id
+        FROM `student` std,`student_course` sc
+        WHERE std.student_id = sc.student_id
+        AND sc.course_id = #{course_id}
+    </select>
+    <resultMap id="studentByCourseMap" type="Student">
+        <result property="id" column="student_id"/>
+        <!--property与column相同的没必要配置-->
+        <!--<result property="name" column="name"/>-->
+        <!--<result property="number" column="number"/>-->
+    </resultMap>
+</mapper>
