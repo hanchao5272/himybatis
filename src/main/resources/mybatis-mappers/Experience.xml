@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--MyBatis的分配置文件，分别对应每个实体，用来配置SQL操作及SQL语句-->
+<!--namespace，定义这个映射的命名域,这里指向Dao层接口-->
+<mapper namespace="pers.hanchao.himybatis.many2one.IExperienceDAO">
+
+    <select id="queryExperienceById" parameterType="Integer" resultMap="experiencePersonMap">
+        SELECT exp.*,psn.* FROM experience exp LEFT JOIN person psn ON exp.person_id = psn.person_id WHERE exp.experience_id = #{id}
+    </select>
+
+    <resultMap id="experiencePersonMap" type="pers.hanchao.himybatis.many2one.Experience">
+        <result property="id" column="experience_id"/>
+        <result property="company" column="company"/>
+        <result property="position" column="position"/>
+        <association property="person" column="user_id" javaType="pers.hanchao.himybatis.many2one.Person">
+            <result property="id" column="person_id"/>
+            <result property="name" column="name"/>
+            <result property="age" column="age"/>
+        </association>
+    </resultMap>
+</mapper>

@@ -8,8 +8,8 @@
     <select id="queryPersonById" parameterType="Integer" resultMap="personExperienceMap">
         SELECT psn.*,exp.* FROM `person` psn LEFT JOIN `experience` exp ON psn.person_id = exp.person_id WHERE psn.person_id = #{id}
     </select>
-    <!--注意上面的返回对象resultMap指向这个id；Person是数据模型    -->
-    <resultMap id="personExperienceMap" type="Person">
+    <!--注意上面的返回对象resultMap指向这个id；Person是数据模型，用全路径名是为了防止冲突    -->
+    <resultMap id="personExperienceMap" type="pers.hanchao.himybatis.one2many.Person">
         <!--property是对象里的字段名，column是数据库中的字段名-->
         <result property="id" column="person_id"/>
         <result property="name" column="name"/>
