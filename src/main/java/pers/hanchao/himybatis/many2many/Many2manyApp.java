@@ -86,10 +86,12 @@ public class Many2manyApp {
             course = courseDAO.queryCourseById(6);
             LOGGER.info(course.toString());
             showList(course.getStudentList());
-
+            //事务提交
+//            sqlSession.commit();
+        }catch (Exception e){
+            //事务回滚
+            sqlSession.rollback();
         }finally {
-            //提交
-            sqlSession.commit();
             //关闭连接
             sqlSession.close();
         }

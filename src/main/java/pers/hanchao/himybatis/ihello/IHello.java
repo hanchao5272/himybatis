@@ -47,9 +47,14 @@ public class IHello {
             if (null != problem){
                 LOGGER.info(problem.toString());
             }
+            //事务提交
+            sqlSession.commit();
+        }catch (Exception e){
+            //事务回滚
+            sqlSession.rollback();
         }finally {
+            //关闭连接
             sqlSession.close();
         }
-
     }
 }

@@ -120,7 +120,8 @@ select * from course;
 drop table student_course;
 create table `student_course`(
 	`student_id` int(4) unsigned not null comment '学生id',
-    `course_id` int(4) unsigned not null comment '选修课id'
+    `course_id` int(4) unsigned not null comment '选修课id',
+    primary key(student_id,course_id)
 )engine = InnoDB comment='学生选修课中间表' charset=utf8;
 insert into student_course values(1,1);
 insert into student_course values(1,3);

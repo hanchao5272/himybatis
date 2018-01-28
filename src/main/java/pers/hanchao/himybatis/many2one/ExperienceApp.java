@@ -37,9 +37,12 @@ public class ExperienceApp {
             Experience experience = experienceDAO.queryExperienceById(2);
             LOGGER.info(experience.toString());
             LOGGER.info(experience.getPerson().toString());
-        }finally {
-            //提交
+            //事务提交
             sqlSession.commit();
+        }catch (Exception e){
+            //事务回滚
+            sqlSession.rollback();
+        }finally {
             //关闭连接
             sqlSession.close();
         }

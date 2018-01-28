@@ -53,9 +53,12 @@ public class PersonApp {
             Person person1 = personDAO.queryPersonById(2);
             LOGGER.info(person1.toString());
             showExperience(person1.getExperienceList());
-        }finally {
-            //提交
+            //事务提交
             sqlSession.commit();
+        }catch (Exception e){
+            //事务回滚
+            sqlSession.rollback();
+        }finally {
             //关闭连接
             sqlSession.close();
         }

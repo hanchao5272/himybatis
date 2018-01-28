@@ -80,9 +80,15 @@ public class TopicApp {
             //查询一个题目
             Topic topic1 = topicDAO.queryTopicById(9);
             LOGGER.info("查询一个话题，id = 9，result:" + topic1.toString());
-         }finally {
-             sqlSession.close();
-         }
+            //事务提交
+//            sqlSession.commit();
+        }catch (Exception e){
+            //事务回滚
+            sqlSession.rollback();
+        }finally {
+            //关闭连接
+            sqlSession.close();
+        }
     }
 
     /**

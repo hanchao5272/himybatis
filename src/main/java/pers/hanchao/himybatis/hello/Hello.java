@@ -46,10 +46,13 @@ public class Hello {
                 //输出结果
                 LOGGER.info(question.toString());
             }
+            //事务提交
+            sqlSession.commit();
+        }catch (Exception e){
+            //事务回滚
+            sqlSession.rollback();
         }finally {
-            //提交,因为是查询，务必要
-            //sqlSession.commit();
-            //关闭SqlSession
+            //关闭连接
             sqlSession.close();
         }
     }
