@@ -1,10 +1,13 @@
 package pers.hanchao.himybatis.curd;
 
+import org.springframework.stereotype.Repository;
+
 import java.util.List;
 /**
  * <p>Topic的DAO层接口</p>
  * @author hanchao 2018/1/27 0:01
  **/
+@Repository
 public interface ITopicDAO {
     /** 新增一个题目 */
     void insertTopic(Topic topic);
