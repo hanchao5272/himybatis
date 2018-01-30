@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--MyBatis的分配置文件，分别对应每个实体，用来配置SQL操作及SQL语句-->
+<!--namespace，定义这个映射的命名域,这里指向Dao层接口-->
+<mapper namespace="pers.hanchao.himybatis.dynamic.IBookDAO">
+    <!--查询所有的旧书，查询条件可能有价格、是否汉化-->
+    <select id="selectOldBookWitIf" parameterType="Book" resultType="Book">
+        SELECT * FROM `book`
+        WHERE old = 1
+        <if test="price != null">
+            price &lt;= #{price}
+        </if>
+        <if test="chinese != null">
+            AND chinese = #{chinese}
+        </if>
+    </select>
+
+    <!--查询所有书籍，查询条件可能有价格、是否汉化【where形式】-->
+    <select id="selectBookWithWhere" parameterType="Book" resultType="Book">
+        SELECT * FROM `book`
+        <where>
+            <if test="price != null">
+                price &gt;= #{price}
+            </if>
+            <if test="chinese != null">
+                AND chinese = #{chinese}
+            </if>
+        </where>
+    </select>
+    <!--查询所有书籍，查询条件可能有价格、是否汉化【trim形式】-->
+    <select id="selectBookWithTrim" resultType="Book" parameterType="Book">
+        SELECT * FROM `book`
+        <trim prefix="WHERE" prefixOverrides="AND|OR">
+            <if test="price != null">
+                price &gt;= #{price}
+            </if>
+            <if test="chinese != null">
+                AND chinese = #{chinese}
+            </if>
+        </trim>
+    </select>
+
+    <!--根据id修改一本书，可能的修改条件有价格、书籍名【set形式】-->
+    <update id="updateBookWithSet" parameterType="Book">
+        UPDATE `book`
+        <set>
+            <if test="price != null">
+                price = #{price},
+            </if>
+            <if test="name != null">
+                name = #{name},
+            </if>
+        </set>
+    </update>
+    <!--根据id修改一本书，可能的修改条件有价格、书籍名【trim形式】-->
+    <update id="updateBookWithTrim" parameterType="Book">
+        UPDATE `book`
+        <trim prefix="SET" prefixOverrides=",">
+            <if test="price != null">
+                price = #{price},
+            </if>
+            <if test="name != null">
+                name = #{name},
+            </if>
+        </trim>
+    </update>
+
+    <!--查询书籍，如果查询条件有编号按编号查询，有书名就按书名查询，有价格按价格查询,都没有就查询旧书-->
+    <select id="selectBookWithChoose" parameterType="Book" resultType="Book">
+        SELECT * FROM `book`
+        <where>
+            <choose>
+                <when test="number != null">number = #{number}</when>
+                <when test="name != null">name = #{name}</when>
+                <when test="price != price">price = #{name}</when>
+                <otherwise>old = 1</otherwise>
+            </choose>
+        </where>
+    </select>
+
+    <!--查询书籍，查询条件为多个书籍名称-->
+    <select id="selectBookWithForEach" resultType="Book" parameterType="Book">
+        SELECT * FROM `book`
+        <where>
+            name IN 
+            <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+              #{name}
+            </foreach>
+        </where>
+    </select>
+
+    <!--查询书籍，要求书籍编号符合一个年级的编号，如初中、高中等等-->
+    <select id="selectBookWithBind" parameterType="String" resultType="Book">
+        SELECT * FROM `book`
+        <bind name="grade_number" value="_parameter.getNumber() + '%'"/>
+        <where>
+            number like #{grade_number}
+        </where>
+    </select>
+</mapper>

@@ -137,3 +137,10 @@ insert into student_course values(3,4);
 insert into student_course values(3,5);
 select * from student_course;
 ```
+
+## 7.动态语句
+http://blog.csdn.net/xuanzhangran/article/details/60329357
+```sql
+
+
+```
