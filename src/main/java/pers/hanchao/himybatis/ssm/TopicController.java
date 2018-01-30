@@ -3,7 +3,7 @@ package pers.hanchao.himybatis.ssm;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import pers.hanchao.himybatis.curd.Topic;
+import pers.hanchao.himybatis.curd.entity.Topic;
 import pers.hanchao.himybatis.utils.JsonResult;
 import pers.hanchao.himybatis.utils.ShowList;
 

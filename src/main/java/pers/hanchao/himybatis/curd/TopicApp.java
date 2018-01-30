@@ -5,10 +5,11 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.apache.log4j.Logger;
+import pers.hanchao.himybatis.curd.dao.ITopicDAO;
+import pers.hanchao.himybatis.curd.entity.Topic;
 
 import java.io.IOException;
 import java.io.Reader;
-import java.util.ArrayList;
 import java.util.List;
 
 /**

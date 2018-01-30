@@ -1,4 +1,4 @@
-package pers.hanchao.himybatis.curd;
+package pers.hanchao.himybatis.curd.entity;
 
 /**
  * <p>话题</p>

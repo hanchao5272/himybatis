@@ -3,8 +3,8 @@ package pers.hanchao.himybatis.ssm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import pers.hanchao.himybatis.curd.ITopicDAO;
-import pers.hanchao.himybatis.curd.Topic;
+import pers.hanchao.himybatis.curd.dao.ITopicDAO;
+import pers.hanchao.himybatis.curd.entity.Topic;
 
 import java.util.List;
 

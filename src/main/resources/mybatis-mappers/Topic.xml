@@ -4,7 +4,7 @@
 <!--MyBatis的分配置文件，分别对应每个实体，用来配置SQL操作及SQL语句-->
 <!--namespace，定义这个映射的命名域,这里指向Dao层接口-->
 <!--先开发ITopicDAO，在开发Topic.xml-->
-<mapper namespace="pers.hanchao.himybatis.curd.ITopicDAO">
+<mapper namespace="pers.hanchao.himybatis.curd.dao.ITopicDAO">
     <!--新增一个话题-->
     <insert id="insertTopic" parameterType="Topic">
         INSERT INTO `topic`(id,title,score,answer) VALUE(#{id},#{title},#{score},#{answer})

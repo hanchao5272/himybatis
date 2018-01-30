@@ -1,6 +1,7 @@
-package pers.hanchao.himybatis.curd;
+package pers.hanchao.himybatis.curd.dao;
 
 import org.springframework.stereotype.Repository;
+import pers.hanchao.himybatis.curd.entity.Topic;
 
 import java.util.List;
 /**

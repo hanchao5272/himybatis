@@ -10,7 +10,7 @@
         <!--通过XML+IDao的配置方式，调用方式更方便-->
         <typeAlias type="pers.hanchao.himybatis.ihello.Problem" alias="Problem"/>
         <!--通过XML+IDAO的配置方式，实现单表的增删改查-->
-        <typeAlias type="pers.hanchao.himybatis.curd.Topic" alias="Topic"/>
+        <typeAlias type="pers.hanchao.himybatis.curd.entity.Topic" alias="Topic"/>
         <!--一对多实例，通过collection标签进行关联-->
         <typeAlias type="pers.hanchao.himybatis.one2many.Person" alias="Person"/>
         <typeAlias type="pers.hanchao.himybatis.one2many.Experience" alias="Experience"/>
