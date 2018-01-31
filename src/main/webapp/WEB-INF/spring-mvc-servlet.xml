@@ -11,7 +11,8 @@
        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
     <!--开启component注解自动扫描-->
-    <context:component-scan base-package="pers.hanchao.*"/>
+    <context:component-scan base-package="pers.hanchao.himybatis.dynamic"/>
+    <!--<context:component-scan base-package="pers.hanchao.himybatis.ssm"/>-->
 
     <!-- Spring MVC默认的注解映射的支持 ：提供Controller请求转发，json自动转换等功能-->
     <mvc:annotation-driven />

@@ -44,7 +44,7 @@ public class JsonResult<T> {
 
     @Override
     public String toString() {
-        return "JsonResult{" +
+        return "MyJsonResult{" +
                 "code=" + code +
                 ", message='" + message + '\'' +
                 ", list=" + list +

@@ -4,5 +4,6 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!--数据源信息：PropertyPlaceHolder、DataSource、SqlSessionFactory-->
-    <import resource="classpath:spring-mybatis-jdbc.xml"/>
+    <!--<import resource="classpath:spring-mybatis-jdbc-topic.xml"/>-->
+    <import resource="classpath:spring-mybatis-jdbc-book.xml"/>
 </beans>

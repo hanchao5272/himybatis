@@ -4,8 +4,13 @@
 <!--MyBatis的分配置文件，分别对应每个实体，用来配置SQL操作及SQL语句-->
 <!--namespace，定义这个映射的命名域,这里指向Dao层接口-->
 <mapper namespace="pers.hanchao.himybatis.dynamic.IBookDAO">
+    <!--根据id查询一本书-->
+    <select id="selectBookById" resultType="Book" parameterType="Integer">
+        SELECT * FROM `book` WHERE id = #{id}
+    </select>
+
     <!--查询所有的旧书，查询条件可能有价格、是否汉化-->
-    <select id="selectOldBookWitIf" parameterType="Book" resultType="Book">
+    <select id="selectBookWitIf" parameterType="Book" resultType="Book">
         SELECT * FROM `book`
         WHERE old = 1
         <if test="price != null">

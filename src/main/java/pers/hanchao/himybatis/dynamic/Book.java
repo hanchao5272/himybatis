@@ -18,6 +18,9 @@ public class Book {
     /** 是否汉化书 */
     private Boolean chinese;
 
+    public Book() {
+    }
+
     public Book(Integer id, String name, String number, Float price, Boolean old, Boolean chinese) {
         this.id = id;
         this.name = name;
