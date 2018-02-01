@@ -30,32 +30,23 @@
         <label>是否汉化：</label><input type="text" id="chinese" name="chinese"/><hr/>
     </div>
     <div>
-        <input type="button" value="selectBookWithIf" onclick="book('post','if')"/><hr/>
-        <input type="button" value="selectBookWithWhere" onclick="book('get','where')"/>
-        <input type="button" value="selectBookWithTrim" onclick="book('get','trim')"/><hr/>
-        <input type="button" value="selectBookWithChoose" onclick="book('get','choose')"/><hr/>
-        <input type="button" value="selectBookWithForEach" onclick="book('get','foreach')"/><hr/>
-        <input type="button" value="selectBookWithForBind" onclick="book('get','bind')"/><hr/>
-        <input type="button" value="updateBookWithSet" onclick="book('post','set')"/>
-        <input type="button" value="updateBookWithTrim" onclick="book('post','trim')"/><hr/>
+        <input type="button" value="selectBookWithIf" onclick="book('if')"/><hr/>
+        <input type="button" value="selectBookWithWhere" onclick="book('where')"/>
+        <input type="button" value="selectBookWithTrim" onclick="book('trim/where')"/><hr/>
+        <input type="button" value="selectBookWithChoose" onclick="book('choose')"/><hr/>
+        <input type="button" value="selectBookWithForEach" onclick="books('foreach')"/><hr/>
+        <input type="button" value="selectBookWithForBind" onclick="book('bind')"/><hr/>
+        <input type="button" value="updateBookWithSet" onclick="book('set')"/>
+        <input type="button" value="updateBookWithTrim" onclick="book('trim/set')"/><hr/>
     </div>
 </div>
 </body>
 <script type="text/javascript" src="../static/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
-    function book(method,keyword) {
-        alert('method:' + method + ',url:' + '/book/' + keyword + ',data:' + JSON.stringify({
-            id:$('#id').val(),
-            number:$('#number').val(),
-            name:$('#name').val(),
-            price:$('#price').val(),
-            old:$('#old').val(),
-            chinese:$('#chinese').val()
-        }));
-
+    function book(url_suffix) {
         $.ajax({
-            type:method,
-            url:'/book/' + keyword + "/",
+            type:'POST',
+            url:'/book/' + url_suffix,
             data:JSON.stringify({
                 id:$('#id').val(),
                 number:$('#number').val(),
@@ -67,7 +58,23 @@
             contentType:'application/json;charset=utf-8',
             success:function (data) {
                 console.log(data);
-                var html = "url:/book/" + keyword + "\nmethod:" + method + "\nresult:\n" + JSON.stringify(data,null,4);
+                var html = "url:/book/" + url_suffix + "\nresult:\n" + JSON.stringify(data,null,4);
+                $("#show").html(html)
+            },
+            error:function (data) {
+                alert(data.method);
+            }
+        });
+    }
+
+    function books(url_suffix) {
+        $.ajax({
+            type:'POST',
+            url:'/book/' + url_suffix,
+            contentType:'application/json;charset=utf-8',
+            success:function (data) {
+                console.log(data);
+                var html = "url:/book/" + url_suffix + "\nresult:\n" + JSON.stringify(data,null,4);
                 $("#show").html(html)
             },
             error:function (data) {

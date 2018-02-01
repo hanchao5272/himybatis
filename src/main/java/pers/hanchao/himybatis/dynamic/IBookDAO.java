@@ -23,16 +23,17 @@ public interface IBookDAO {
     List<Book> selectBookWithTrim(Book book);
 
     /** 根据id修改一本书，可能的修改条件有价格、书籍名【set形式】 */
-    Book updateBookWithSet(Book book);
+    void updateBookWithSet(Book book);
 
     /** 根据id修改一本书，可能的修改条件有价格、书籍名【trim形式】 */
-    Book updateBookWithTrim(Book book);
+    void updateBookWithTrim(Book book);
 
     /** 查询书籍，如果查询条件有编号按编号查询，有书名就按书名查询，有价格按价格查询,都没有就查询旧书 */
     List<Book> selectBookWithChoose(Book book);
 
-    /** 查询书籍，查询条件为多个书籍名称 */
-    List<Book> selectBookWithForEach(Book book);
+    /** 查询书籍，查询条件为多个书籍名称
+     * @param nameList*/
+    List<Book> selectBookWithForEach(List nameList);
 
     /** 查询书籍，要求书籍编号符合一个年级的编号，如初中、高中等等 */
     List<Book> selectBookWithBind(Book book);

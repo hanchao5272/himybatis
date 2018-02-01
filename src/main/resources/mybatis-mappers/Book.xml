@@ -4,6 +4,8 @@
 <!--MyBatis的分配置文件，分别对应每个实体，用来配置SQL操作及SQL语句-->
 <!--namespace，定义这个映射的命名域,这里指向Dao层接口-->
 <mapper namespace="pers.hanchao.himybatis.dynamic.IBookDAO">
+    <!--Integer的空值形式是null,String的空值形式是''-->
+
     <!--根据id查询一本书-->
     <select id="selectBookById" resultType="Book" parameterType="Integer">
         SELECT * FROM `book` WHERE id = #{id}
@@ -14,7 +16,7 @@
         SELECT * FROM `book`
         WHERE old = 1
         <if test="price != null">
-            price &lt;= #{price}
+            AND price &lt;= #{price}
         </if>
         <if test="chinese != null">
             AND chinese = #{chinese}
@@ -53,10 +55,13 @@
             <if test="price != null">
                 price = #{price},
             </if>
-            <if test="name != null">
-                name = #{name},
+            <if test="name != ''">
+                name = #{name}
             </if>
         </set>
+        <where>
+            id = #{id}
+        </where>
     </update>
     <!--根据id修改一本书，可能的修改条件有价格、书籍名【trim形式】-->
     <update id="updateBookWithTrim" parameterType="Book">
@@ -65,32 +70,41 @@
             <if test="price != null">
                 price = #{price},
             </if>
-            <if test="name != null">
-                name = #{name},
+            <if test="name != ''">
+                name = #{name}
             </if>
         </trim>
+        <where>
+            id = #{id}
+        </where>
     </update>
 
     <!--查询书籍，如果查询条件有编号按编号查询，有书名就按书名查询，有价格按价格查询,都没有就查询旧书-->
     <select id="selectBookWithChoose" parameterType="Book" resultType="Book">
         SELECT * FROM `book`
-        <where>
-            <choose>
-                <when test="number != null">number = #{number}</when>
-                <when test="name != null">name = #{name}</when>
-                <when test="price != price">price = #{name}</when>
-                <otherwise>old = 1</otherwise>
-            </choose>
-        </where>
+        <choose>
+            <when test="number != ''">
+                WHERE number = #{number}
+            </when>
+            <when test="name != ''">
+                WHERE name = #{name}
+            </when>
+            <when test="price != null">
+                WHERE price = #{price}
+            </when>
+            <otherwise>
+                WHERE old = TRUE
+            </otherwise>
+        </choose>
     </select>
 
     <!--查询书籍，查询条件为多个书籍名称-->
-    <select id="selectBookWithForEach" resultType="Book" parameterType="Book">
+    <select id="selectBookWithForEach" resultType="Book">
         SELECT * FROM `book`
         <where>
             name IN 
-            <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
-              #{name}
+            <foreach collection="list" item="item" open="(" separator="," close=")">
+              #{item}
             </foreach>
         </where>
     </select>

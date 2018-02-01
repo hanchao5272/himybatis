@@ -12,16 +12,16 @@ public class Book {
     /** 书籍编号 */
     private String number;
     /** 价钱 */
-    private Float price;
+    private Integer price;
     /** 是否二手书 */
-    private Boolean old;
+    private Integer old;
     /** 是否汉化书 */
-    private Boolean chinese;
+    private Integer chinese;
 
     public Book() {
     }
 
-    public Book(Integer id, String name, String number, Float price, Boolean old, Boolean chinese) {
+    public Book(Integer id, String name, String number, Integer price, Integer old, Integer chinese) {
         this.id = id;
         this.name = name;
         this.number = number;
@@ -66,27 +66,27 @@ public class Book {
         this.number = number;
     }
 
-    public Float getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public void setPrice(Float price) {
+    public void setPrice(Integer price) {
         this.price = price;
     }
 
-    public Boolean getOld() {
+    public Integer getOld() {
         return old;
     }
 
-    public void setOld(Boolean old) {
+    public void setOld(Integer old) {
         this.old = old;
     }
 
-    public Boolean getChinese() {
+    public Integer getChinese() {
         return chinese;
     }
 
-    public void setChinese(Boolean chinese) {
+    public void setChinese(Integer chinese) {
         this.chinese = chinese;
     }
 }
