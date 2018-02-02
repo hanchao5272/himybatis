@@ -19,7 +19,7 @@
         <!--用Spring的dataSource替代原mybatis-config.xml的dataSource-->
         <property name="dataSource" ref="dataSource"/>
         <!--配置MyBatis总配置文件,如果通过其他配置取代了所有的MyBatis配置，则可以不要此项配置-->
-        <!--<property name="configLocation" value="classpath:mybatis-config.xml"/>-->
+        <property name="configLocation" value="classpath:mybatis-log4j-config.xml"/>
         <!--配置MyBatis映射文件，取代原mybatis-config.xml的mappers配置-->
         <property name="mapperLocations" value="classpath:mybatis-mappers/Book.xml"/>
         <!--配置类型别名，取代原mybatis-config.xml的typeAliases，最好将实体放在同一类型的包下-->

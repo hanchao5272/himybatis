@@ -140,7 +140,7 @@
     <!--查询书籍，要求书籍编号符合一个年级的编号，如初中、高中等等-->
     <select id="selectBookWithBind" parameterType="String" resultType="Book">
         SELECT * FROM `book`
-        <bind name="grade_number" value="_parameter.getNumber() + '%'"/>
+        <bind name="grade_number" value="number + '%'"/>
         <where>
             number like #{grade_number}
         </where>
