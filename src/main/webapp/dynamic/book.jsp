@@ -18,7 +18,7 @@
 </head>
 <body>
 <div class="div-left div-text-center">
-    <textarea id="show" style="width: 300px;height: 500px;"></textarea>
+    <textarea id="show" style="width: 300px;height: 575px;"></textarea>
 </div>
 <div class="div-left">
     <div class="div-text-center">
@@ -34,7 +34,9 @@
         <input type="button" value="selectBookWithWhere" onclick="book('where')"/>
         <input type="button" value="selectBookWithTrim" onclick="book('trim/where')"/><hr/>
         <input type="button" value="selectBookWithChoose" onclick="book('choose')"/><hr/>
-        <input type="button" value="selectBookWithForEach" onclick="books('foreach')"/><hr/>
+        <input type="button" value="selectBookWithForEach--Array" onclick="books('foreach/array')"/><hr/>
+        <input type="button" value="selectBookWithForEach--List" onclick="books('foreach/list')"/><hr/>
+        <input type="button" value="selectBookWithForEach--Map" onclick="books('foreach/map')"/><hr/>
         <input type="button" value="selectBookWithForBind" onclick="book('bind')"/><hr/>
         <input type="button" value="updateBookWithSet" onclick="book('set')"/>
         <input type="button" value="updateBookWithTrim" onclick="book('trim/set')"/><hr/>

@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class BookService {
@@ -41,8 +42,16 @@ public class BookService {
         return this.bookDAO.selectBookWithChoose(book);
     }
 
-    public List<Book> updateBookWithForEach(List nameList) {
-        return this.bookDAO.selectBookWithForEach(nameList);
+    public List<Book> selectBookWithForEachArray(String[] names) {
+        return this.bookDAO.selectBookWithForEachArray(names);
+    }
+
+    public List<Book> selectBookWithForEachList(List nameList) {
+        return this.bookDAO.selectBookWithForEachList(nameList);
+    }
+
+    public List<Book> selectBookWithForEachMap(Map nameMap) {
+        return this.bookDAO.selectBookWithForEachMap(nameMap);
     }
 
     public List<Book> selectBookWithForBind(Book book) {

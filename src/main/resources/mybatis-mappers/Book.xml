@@ -98,13 +98,41 @@
         </choose>
     </select>
 
-    <!--查询书籍，查询条件为多个书籍名称-->
-    <select id="selectBookWithForEach" resultType="Book">
+    <!--查询书籍，查询条件为多个书籍名称{array}-->
+    <!--在使用ForEach标签时，如果参数类型是Array类型，则collection="Array"-->
+    <!--参数是String[]类型，index是数组下表，item是数组元素array[i]-->
+    <select id="selectBookWithForEachArray" resultType="Book">
+        SELECT * FROM `book`
+        <where>
+            name IN
+            <foreach collection="array" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </where>
+    </select>
+
+    <!--查询书籍，查询条件为多个书籍名称{list}-->
+    <!--在使用ForEach标签时，如果参数类型是List类型，则collection="list"-->
+    <!--参数是List<String>类型，index是元素的序号，item是列表元素list.get(i)-->
+    <select id="selectBookWithForEachList" resultType="Book">
         SELECT * FROM `book`
         <where>
             name IN 
             <foreach collection="list" item="item" open="(" separator="," close=")">
               #{item}
+            </foreach>
+        </where>
+    </select>
+
+    <!--查询书籍，查询条件为多个书籍名称{map}-->
+    <!--在使用ForEach标签时，如果参数类型是Map类型，则collection=map.key-->
+    <!--参数map是Map<key1,Map<key2,value2>>类型，collection是Map<key2,value2>，index=key2，item=value2-->
+    <select id="selectBookWithForEachMap" resultType="Book">
+        SELECT * FROM `book`
+        <where>
+            name IN
+            <foreach collection="nameMap" item="item" open="(" separator="," close=")">
+                #{item}
             </foreach>
         </where>
     </select>

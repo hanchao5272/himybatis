@@ -7,10 +7,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
- * <p>MyBatis动态SQL</p>
+ * <p>MyBatis动态SQL:If,Where,Set,Trim,Choose,ForEach,Bind</p>
  * @author hanchao 2018/1/31 22:46
  **/
 @RestController
@@ -114,15 +116,52 @@ public class BookController {
     }
 
     /**
-     * <p>查询书籍，查询条件为多个书籍名称</p>
+     * <p>查询书籍，查询条件为多个书籍名称(Array形式)</p>
      * @author hanchao 2018/1/31 23:08
      **/
-    @PostMapping("/book/foreach")
-    public MyJsonResult<Book> updateBookWithForEach(){
+    @PostMapping("/book/foreach/array")
+    public MyJsonResult<Book> selectBookWithForEachArray(){
+        String[] names = new String []{"初中数学1","大学英语4"};
+        List<Book> bookList = this.bookService.selectBookWithForEachArray(names);
+        if (null == bookList || bookList.size() == 0){
+            return new MyJsonResult<Book>(2,"暂无记录！");
+        }else {
+            return new MyJsonResult<Book>(1,"success!",bookList);
+        }
+    }
+
+    /**
+     * <p>查询书籍，查询条件为多个书籍名称(list形式)</p>
+     * @author hanchao 2018/1/31 23:08
+     **/
+    @PostMapping("/book/foreach/list")
+    public MyJsonResult<Book> selectBookWithForEachList(){
         List<String> nameList = new ArrayList<String>();
         nameList.add(new String("高中数学2"));
         nameList.add(new String("初中数学2"));
-        List<Book> bookList = this.bookService.updateBookWithForEach(nameList);
+        List<Book> bookList = this.bookService.selectBookWithForEachList(nameList);
+        if (null == bookList || bookList.size() == 0){
+            return new MyJsonResult<Book>(2,"暂无记录！");
+        }else {
+            return new MyJsonResult<Book>(1,"success!",bookList);
+        }
+    }
+
+    /**
+     * <p>查询书籍，查询条件为多个书籍名称(Map形式)</p>
+     * @author hanchao 2018/1/31 23:08
+     **/
+    @PostMapping("/book/foreach/map")
+    public MyJsonResult<Book> selectBookWithForEachMap(){
+
+        Map<String,String > nameMap = new HashMap<String, String>();
+        nameMap.put("1","高中数学3");
+        nameMap.put("2","大学英语1");
+
+        Map<String ,Map<String ,String >> map = new HashMap<String, Map<String, String>>();
+        map.put("nameMap",nameMap);
+
+        List<Book> bookList = this.bookService.selectBookWithForEachMap(map);
         if (null == bookList || bookList.size() == 0){
             return new MyJsonResult<Book>(2,"暂无记录！");
         }else {
