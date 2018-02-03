@@ -66,7 +66,7 @@
     <!--根据id修改一本书，可能的修改条件有价格、书籍名【trim形式】-->
     <update id="updateBookWithTrim" parameterType="Book">
         UPDATE `book`
-        <trim prefix="SET" suffixOverrides=",">
+        <trim prefix="SET" prefixOverrides=",">
             <if test="price != null">
                 price = #{price},
             </if>
@@ -143,6 +143,19 @@
         <bind name="grade_number" value="number + '%'"/>
         <where>
             number like #{grade_number}
+        </where>
+    </select>
+
+    <!--根据数据库厂商类型进行不同的操作-->
+    <select id="selectBookWithMultiDB" parameterType="Book" resultType="Book">
+        SELECT * FROM `book`
+        <where>
+            <if test="_databaseId == 'oracle'">
+                SUBSTR(name,0,2) == '初中'
+            </if>
+            <if test="_databaseId == 'mysql'">
+                SUBSTRING (name,0,2) == '初中'
+            </if>
         </where>
     </select>
 </mapper>
