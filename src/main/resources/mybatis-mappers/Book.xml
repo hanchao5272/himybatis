@@ -66,7 +66,7 @@
     <!--根据id修改一本书，可能的修改条件有价格、书籍名【trim形式】-->
     <update id="updateBookWithTrim" parameterType="Book">
         UPDATE `book`
-        <trim prefix="SET" prefixOverrides=",">
+        <trim prefix="SET" suffixOverrides=",">
             <if test="price != null">
                 price = #{price},
             </if>
