@@ -1,281 +1,291 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>pers.hanchao</groupId>
-  <artifactId>himybatis</artifactId>
-  <packaging>war</packaging>
-  <version>1.0-SNAPSHOT</version>
-  <name>himybatis Maven Webapp</name>
-  <url>http://maven.apache.org</url>
-  <properties>
-    <springframework.version>5.0.0.RELEASE</springframework.version>
-    <servlet-api.version>3.1.0</servlet-api.version>
-    <jsp-api.version>2.0</jsp-api.version>
-    <jstl.version>1.2</jstl.version>
-    <commons-logging.version>1.2</commons-logging.version>
-    <commons-lang3.version>3.3.2</commons-lang3.version>
-    <commons-io.version>2.4</commons-io.version>
-    <tomcat-plugin.version>2.2</tomcat-plugin.version>
-    <jackson.version>2.9.0</jackson.version>
-    <log4j.version>1.2.17</log4j.version>
-    <junit.version>4.12</junit.version>
-    <mysql.version>5.1.40</mysql.version>
-    <mybatis.version>3.4.5</mybatis.version>
-    <mybatis-spring.version>1.3.1</mybatis-spring.version>
-  </properties>
-  <dependencies>
-    <dependency>
-      <groupId>com.github.pagehelper</groupId>
-      <artifactId>pagehelper</artifactId>
-      <version>5.1.2</version>
-    </dependency>
-    <dependency>
-      <groupId>org.mybatis.generator</groupId>
-      <artifactId>mybatis-generator-core</artifactId>
-      <version>1.3.6</version>
-    </dependency>
-    <!--mybatis-->
-    <dependency>
-      <groupId>org.mybatis</groupId>
-      <artifactId>mybatis</artifactId>
-      <version>${mybatis.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.mybatis</groupId>
-      <artifactId>mybatis-spring</artifactId>
-      <version>${mybatis-spring.version}</version>
-    </dependency>
-    <!--mysql -->
-    <dependency>
-      <groupId>mysql</groupId>
-      <artifactId>mysql-connector-java</artifactId>
-      <version>${mysql.version}</version>
-    </dependency>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>pers.hanchao</groupId>
+    <artifactId>himybatis</artifactId>
+    <packaging>war</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <name>himybatis Maven Webapp</name>
+    <url>http://maven.apache.org</url>
+    <properties>
+        <springframework.version>5.0.0.RELEASE</springframework.version>
+        <servlet-api.version>3.1.0</servlet-api.version>
+        <jsp-api.version>2.0</jsp-api.version>
+        <jstl.version>1.2</jstl.version>
+        <commons-logging.version>1.2</commons-logging.version>
+        <commons-lang3.version>3.3.2</commons-lang3.version>
+        <commons-io.version>2.4</commons-io.version>
+        <tomcat-plugin.version>2.2</tomcat-plugin.version>
+        <jackson.version>2.9.0</jackson.version>
+        <log4j.version>1.2.17</log4j.version>
+        <junit.version>4.12</junit.version>
+        <mysql.version>5.1.40</mysql.version>
+        <mybatis.version>3.4.5</mybatis.version>
+        <mybatis-spring.version>1.3.1</mybatis-spring.version>
+        <mybatis-generator.version>1.3.6</mybatis-generator.version>
+        <pagehelper.version>5.1.2</pagehelper.version>
+    </properties>
+    <dependencies>
+        <!--分页插件-->
+        <!--https://github.com/pagehelper/Mybatis-PageHelper/blob/master/wikis/zh/HowToUse.md-->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+            <version>${pagehelper.version}</version>
+        </dependency>
 
-    <!--&lt;!&ndash;junit&ndash;&gt;-->
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>${junit.version}</version>
-      <scope>test</scope>
-    </dependency>
+        <!--MyBatis代码自动生成插件-->
+        <!--MyBatis Generator-->
+        <dependency>
+            <groupId>org.mybatis.generator</groupId>
+            <artifactId>mybatis-generator-core</artifactId>
+            <version>${mybatis-generator.version}</version>
+        </dependency>
 
-    <!--log4j-->
-    <dependency>
-      <groupId>log4j</groupId>
-      <artifactId>log4j</artifactId>
-      <version>${log4j.version}</version>
-    </dependency>
+        <!--MyBatis框架-->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>${mybatis.version}</version>
+        </dependency>
+        <!--mybatis-spring:将 MyBatis 代码无缝地整合到 Spring 中-->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-spring</artifactId>
+            <version>${mybatis-spring.version}</version>
+        </dependency>
 
-    <!-- Needed for JSON View -->
-    <!--jackson 通过@RquestBody传参时，将对象转换成json格式。
-    通过@ResponseBody返回值时，将对象转换成json格式-->
-    <dependency>
-    <groupId>com.fasterxml.jackson.core</groupId>
-    <artifactId>jackson-databind</artifactId>
-    <version>${jackson.version}</version>
-    </dependency>
-    <dependency>
-    <groupId>com.fasterxml.jackson.core</groupId>
-    <artifactId>jackson-core</artifactId>
-    <version>${jackson.version}</version>
-    </dependency>
-    <dependency>
-    <groupId>com.fasterxml.jackson.core</groupId>
-    <artifactId>jackson-annotations</artifactId>
-    <version>${jackson.version}</version>
-    </dependency>
-
-    <!--基本包-->
-    <dependency>
-      <groupId>org.apache.commons</groupId>
-      <artifactId>commons-lang3</artifactId>
-      <version>${commons-lang3.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>commons-io</groupId>
-      <artifactId>commons-io</artifactId>
-      <version>${commons-io.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>commons-logging</groupId>
-      <artifactId>commons-logging</artifactId>
-      <version>${commons-logging.version}</version>
-    </dependency>
-
-    <!--Cannot find the class file for javax.servlet.ServletContext.-->
-    <!-- servlet的jar -->
-    <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>javax.servlet-api</artifactId>
-      <version>${servlet-api.version}</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>javax.servlet.jsp</groupId>
-      <artifactId>jsp-api</artifactId>
-      <version>${jsp-api.version}</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>jstl</artifactId>
-      <version>${jstl.version}</version>
-    </dependency>
-
-    <!--&lt;!&ndash;spring&ndash;&gt;-->
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-context</artifactId>
-      <version>${springframework.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-context-support</artifactId>
-      <version>${springframework.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-aop</artifactId>
-      <version>${springframework.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-core</artifactId>
-      <version>${springframework.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-beans</artifactId>
-      <version>${springframework.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-jdbc</artifactId>
-      <version>${springframework.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-test</artifactId>
-      <version>${springframework.version}</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-orm</artifactId>
-      <version>${springframework.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-tx</artifactId>
-      <version>${springframework.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-webmvc</artifactId>
-      <version>${springframework.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-web</artifactId>
-      <version>${springframework.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-expression</artifactId>
-      <version>${springframework.version}</version>
-    </dependency>
-
-    <!--&lt;!&ndash; Needed for XML View (with JAXB2) &ndash;&gt;-->
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-oxm</artifactId>
-      <version>${springframework.version}</version>
-    </dependency>
-
-  </dependencies>
-  <build>
-    <finalName>himybatis</finalName>
-    <plugins>
-      <!--Maven Tomcat plugin-->
-      <!-- http://mvnrepository.com/artifact/org.apache.tomcat.maven/tomcat7-maven-plugin -->
-      <plugin>
-        <groupId>org.apache.tomcat.maven</groupId>
-        <artifactId>tomcat7-maven-plugin</artifactId>
-        <version>${tomcat-plugin.version}</version>
-        <configuration>
-          <path>/</path>
-          <port>8080</port>
-          <uriEncoding>utf-8</uriEncoding>
-        </configuration>
-      </plugin>
-      <plugin>
-        <!--&lt;!&ndash;MyBatis-generator插件，生成结果：Xxxx.java,XxxxMapper,XxxxMapper.xml，注释为英文&ndash;&gt;-->
-        <!--<groupId>org.mybatis.generator</groupId>-->
-        <!--<artifactId>mybatis-generator-maven-plugin</artifactId>-->
-        <!--<version>1.3.6</version>-->
-        <!--<dependencies>-->
-          <!--&lt;!&ndash;mysql数据库驱动&ndash;&gt;-->
-          <!--<dependency>-->
-            <!--<groupId>mysql</groupId>-->
-            <!--<artifactId>mysql-connector-java</artifactId>-->
-            <!--<version>${mysql.version}</version>-->
-          <!--</dependency>-->
-        <!--</dependencies>-->
-        <!--MyBatis-generator + ppj117/mybatis-generator-core插件-->
-        <!--生成结果：XxxxEntity.java,XxxxDao.java,XxxxDao.xml，注释为中文（XxxxEntity字段、方法中文注释，XxxxDao方法中文注释）-->
-        <groupId>org.mybatis.generator</groupId>
-        <artifactId>mybatis-generator-maven-plugin</artifactId>
-        <version>1.3.2</version>
-        <dependencies>
-          <!--mysql数据库驱动-->
-          <dependency>
+        <!--mysql -->
+        <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql.version}</version>
-          </dependency>
-          <dependency>
-            <groupId>com.haier.hairy</groupId>
-            <artifactId>mybatis-generator-core</artifactId>
-            <version>1.0.1</version>
-          </dependency>
-        </dependencies>
-        <!--自动生成-->
-        <executions>
-          <execution>
-            <id>MyBatis Generator</id>
-            <goals>
-              <goal>generate</goal>
-            </goals>
-            <configuration>
-              <!--MyBatis-generator配置文件的位置-->
-              <configurationFile>src/main/resources/generatorConfig.xml</configurationFile>
-              <!--是否覆盖同名文件，默认为false-->
-              <overwrite>true</overwrite>
-              <!--是否将执行过程输出到控制台-->
-              <verbose>true</verbose>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-      <!--
-          指定maven插件编译版本
-          1：maven：since2.0, 默认用jdk1.3来编译，maven 3.x 貌似是默认用jdk 1.5。
-          2：windows默认使用GBK编码，java项目经常编码为utf8，也需要在compiler插件中指出，否则中文乱码可能会出现编译错误。
-       -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.7.0</version>
-          <configuration>
-              <!-- use the Java 8 language features -->
-              <source>1.8</source>
-              <!-- want the compiled classes to be compatible with JVM 1.8 -->
-              <target>1.8</target>
-              <!-- The -encoding argument for the Java compiler. -->
-              <encoding>UTF8</encoding>
-          </configuration>
-      </plugin>
-    </plugins>
-  </build>
+        </dependency>
+
+        <!--单元测试Junit4-->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!--日志log4j-->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+
+        <!-- Needed for JSON View -->
+        <!--jackson 通过@RquestBody传参时，将对象转换成json格式。
+        通过@ResponseBody返回值时，将对象转换成json格式-->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
+        <!--基本包-->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons-io.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>${commons-logging.version}</version>
+        </dependency>
+
+        <!--Cannot find the class file for javax.servlet.ServletContext.-->
+        <!-- servlet相关jar -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${servlet-api.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>jsp-api</artifactId>
+            <version>${jsp-api.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>${jstl.version}</version>
+        </dependency>
+
+        <!--Spring相关jar包-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${springframework.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>${springframework.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aop</artifactId>
+            <version>${springframework.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${springframework.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>${springframework.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${springframework.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${springframework.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>${springframework.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>${springframework.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${springframework.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${springframework.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-expression</artifactId>
+            <version>${springframework.version}</version>
+        </dependency>
+        <!-- Needed for XML View (with JAXB2) -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-oxm</artifactId>
+            <version>${springframework.version}</version>
+        </dependency>
+
+    </dependencies>
+    <build>
+        <finalName>himybatis</finalName>
+        <plugins>
+            <!--Maven Tomcat plugin-->
+            <!-- http://mvnrepository.com/artifact/org.apache.tomcat.maven/tomcat7-maven-plugin -->
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>${tomcat-plugin.version}</version>
+                <configuration>
+                    <path>/</path>
+                    <port>8080</port>
+                    <uriEncoding>utf-8</uriEncoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <!--MyBatis-generator插件，生成结果：Xxxx.java,XxxxMapper,XxxxMapper.xml，注释为英文-->
+                <!--<groupId>org.mybatis.generator</groupId>-->
+                <!--<artifactId>mybatis-generator-maven-plugin</artifactId>-->
+                <!--<version>1.3.6</version>-->
+                <!--<dependencies>-->
+                <!--&lt;!&ndash;mysql数据库驱动&ndash;&gt;-->
+                <!--<dependency>-->
+                <!--<groupId>mysql</groupId>-->
+                <!--<artifactId>mysql-connector-java</artifactId>-->
+                <!--<version>${mysql.version}</version>-->
+                <!--</dependency>-->
+                <!--</dependencies>-->
+
+                <!--MyBatis-generator + ppj117/mybatis-generator-core插件-->
+                <!--生成结果：XxxxEntity.java,XxxxDao.java,XxxxDao.xml，注释为中文（XxxxEntity字段、方法中文注释，XxxxDao方法中文注释）-->
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <version>1.3.2</version>
+                <dependencies>
+                    <!--mysql数据库驱动-->
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>${mysql.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.haier.hairy</groupId>
+                        <artifactId>mybatis-generator-core</artifactId>
+                        <version>1.0.1</version>
+                    </dependency>
+                </dependencies>
+                <!--自动生成-->
+                <executions>
+                    <execution>
+                        <id>MyBatis Generator</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <!--MyBatis-generator配置文件的位置-->
+                            <configurationFile>src/main/resources/generatorConfig.xml</configurationFile>
+                            <!--是否覆盖同名文件，默认为false-->
+                            <overwrite>true</overwrite>
+                            <!--是否将执行过程输出到控制台-->
+                            <verbose>true</verbose>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <!--
+                指定maven插件编译版本
+                1：maven：since2.0, 默认用jdk1.3来编译，maven 3.x 貌似是默认用jdk 1.5。
+                2：windows默认使用GBK编码，java项目经常编码为utf8，也需要在compiler插件中指出，否则中文乱码可能会出现编译错误。
+             -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.7.0</version>
+                <configuration>
+                    <!-- use the Java 8 language features -->
+                    <source>1.8</source>
+                    <!-- want the compiled classes to be compatible with JVM 1.8 -->
+                    <target>1.8</target>
+                    <!-- The -encoding argument for the Java compiler. -->
+                    <encoding>UTF8</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
