@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!--MyBatis的总配置文件-->
+<configuration>
+    <!--类型依赖：配置Java类对应的别名，与Question.xml中的resultType相互对应-->
+    <typeAliases>
+        <!--测试MyBatis Generator-->
+        <typeAlias type="pers.hanchao.himybatis.generator.entity.TopicEntity" alias="TopicEntity"/>
+    </typeAliases>
+    <!--mybatis的数据库连接-->
+    <!--MyBatis的数据库连接配置交由Spring管理-->
+    <environments default="dev">
+        <environment id="dev">
+            <!--事务管理-->
+            <transactionManager type="JDBC"></transactionManager>
+            <!--数据源信息-->
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/exam?useSSL=false"/>
+                <property name="username" value="root"/>
+                <property name="password" value="1qaz@WSX"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <!--映射xml的路径配置-->
+    <!--这里交给sqlSessionFactory 的 mapperLocations属性去得到所有配置信息-->
+    <mappers>
+        <!--测试MyBatis Generator-->
+        <mapper resource="generator/TopicDao.xml"/>
+    </mappers>
+</configuration>
