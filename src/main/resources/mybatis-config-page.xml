@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!--MyBatis的总配置文件-->
+<configuration>
+    <!--
+    plugins在配置文件中的位置必须符合要求，否则会报错，顺序如下:
+    properties?, settings?,
+    typeAliases?, typeHandlers?,
+    objectFactory?,objectWrapperFactory?,
+    plugins?,
+    environments?, databaseIdProvider?, mappers?
+-->
+    <settings>
+        <!--指定MyBatis的日志以log4j进行实现-->
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>
+    <typeAliases>
+        <!--测试PageHelper-->
+        <typeAlias type="pers.hanchao.himybatis.page.entity.AppleEntity" alias="AppleEntity"/>
+    </typeAliases>
+
+    <plugins>
+        <!--https://github.com/pagehelper/Mybatis-PageHelper-->
+        <!-- com.github.pagehelper为PageHelper类所在包名 -->
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+            <!--指定数据库连接类型，此属性可以自动检测，不配置也可以-->
+            <property name="helperDialect" value="mysql"/>
+            <!--pageSize=0时，是否查询出全部结果，默认为false-->
+            <property name="pageSizeZero" value="true"/>
+            <!--分页合理化参数，默认文false；pageNum<=0，查询第一页；pageNum>总页数，查询最后一页-->
+            <property name="reasonable" value="true"/>
+        </plugin>
+    </plugins>
+
+    <!--mybatis的数据库连接-->
+    <!--MyBatis的数据库连接配置交由Spring管理-->
+    <environments default="dev">
+        <environment id="dev">
+            <!--事务管理-->
+            <transactionManager type="JDBC"></transactionManager>
+            <!--数据源信息-->
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/exam?useSSL=false"/>
+                <property name="username" value="root"/>
+                <property name="password" value="1qaz@WSX"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!--映射xml的路径配置-->
+    <!--这里交给sqlSessionFactory 的 mapperLocations属性去得到所有配置信息-->
+    <mappers>
+        <!--测试PageHelper-->
+        <mapper resource="generator/AppleDao.xml"/>
+    </mappers>
+</configuration>

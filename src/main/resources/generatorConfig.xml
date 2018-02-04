@@ -21,7 +21,7 @@
 
         <!--注释生成配置-->
         <!--原始版本：注释为英文，生成结果：Xxxx.java,XxxxMapper,XxxxMapper.xml，-->
-        <commentGenerator>
+        <!--<commentGenerator>-->
         <!--扩展版本：中文注释，生成结果：XxxxEntity.java,XxxxDao.java,XxxxDao.xml -->
         <commentGenerator type="org.mybatis.generator.internal.HairyCommentGenerator">
             <property name="javaFileEncoding" value="UTF-8"/>
@@ -41,7 +41,7 @@
         <!--Java实体类生成配置-->
         <!--targetPackage：生成的实体类存放的包名-->
         <!--targetProject：目标项目路径（这里是相对路径，也可以绝对路径）-->
-        <javaModelGenerator targetPackage="pers.hanchao.himybatis.generator.entity" targetProject="src\main\java">
+        <javaModelGenerator targetPackage="pers.hanchao.himybatis.page.entity" targetProject="src\main\java">
             <!--是否允许建立子包，generator能够通过mysql的schema再生成一级子目录，默认为false-->
             <property name="enableSubPackages" value="true"/>
             <!--是否对查询结果进行trim()操作，例如username.trim()，默认为false-->
@@ -60,7 +60,7 @@
         <!--type="XMLMAPPER"：生成的对象是 MyBatis 3.x 映射器基础结构的 Java接口。 这些接口将会依赖于生成的XML文件。-->
         <!--targetPackage：用于存放IDAO-->
         <!--targetProject：目标项目路径（这里是相对路径，也可以绝对路径）-->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="pers.hanchao.himybatis.generator.dao" targetProject="src\main\java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="pers.hanchao.himybatis.page.dao" targetProject="src\main\java">
             <!--是否允许建立子包，generator能够通过mysql的schema再生成一级子目录，默认为false-->
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
@@ -69,7 +69,7 @@
         <!--schema="exam"：指定schema-->
         <!--tableName="%"：生成全部表-->
         <!--<table schema="exam" tableName="%">-->
-        <table schema="exam" tableName="topic">
+        <table schema="exam" tableName="apple">
             <!--generatedKey：指定自动生成主键的属性-->
             <!--column="id"：凡是列名为id的，都生成为主键-->
             <!--sqlStatement="Mysql"：insert表时主键转换为SELECT LAST_INSERT_ID()-->
