@@ -1,6 +1,34 @@
 # MyBaits代码实例
 
-## 1.MyBatis的入门实例：通过纯XML配置
+CSDN专栏：[MyBatis学习实例](https://blog.csdn.net/column/details/20009.html)
+
+----------
+
+[SSM框架超级详细整合记录：Spring+Spring MVC+MyBatis+Maven+Git+MySQL+IDEA](http://blog.csdn.net/hanchao5272/article/details/79305666)
+
+最近抽空将Mybatis涉及到的一些技术进行了复习，并写了一些代码实例，将源代码整理到这里，作为以后翻阅的记录。
+
+说明： 
+
+- 因为时间有限，文章内容可能存在错别字等现象，敬请谅解。 
+- 为了展示各知识点，有些命名方式很不规范（尤其是包名、类名），敬请谅解。 
+- 因为水平有限，有些内容可能存在错误，敬请指教。
+
+## 目录
+
+[MyBatis代码实例系列-01：MyBatis简单搭建与入门实例：纯XML方式、IDAO+XML方式](http://blog.csdn.net/hanchao5272/article/details/79184403)
+[MyBatis代码实例系列-02：MyBatis用log4j打印SQL以及MyBatis的事务控制](http://blog.csdn.net/hanchao5272/article/details/79200426)
+[MyBatis代码实例系列-03：MyBatis单张表简单实现增删改查 + log4j + 手动事务控制](http://blog.csdn.net/hanchao5272/article/details/79244310)
+[MyBatis代码实例系列-04：MyBatis多表映射实例（一对多、多对一和多对多）](http://blog.csdn.net/hanchao5272/article/details/79244359)
+[MyBatis代码实例系列-05：Mybatis初步整合Spring + Spring MVC框架，实现Web请求实例](http://blog.csdn.net/hanchao5272/article/details/79247396)
+[MyBatis代码实例系列-06：Mybatis动态SQL标签（一）---if、where、set、trim、choose](http://blog.csdn.net/hanchao5272/article/details/79248416)
+[ MyBatis代码实例系列-07：Mybatis动态SQL标签（二）---bind、foreach和多数据库厂商支持_databaseId](http://blog.csdn.net/hanchao5272/article/details/79250556)
+[MyBatis代码实例系列-08：MyBatisGenerator插件及扩展(中文注释和Mapper重命名为Dao)](http://blog.csdn.net/hanchao5272/article/details/79251828)
+[MyBatis代码实例系列-09：初步整合Spring + Spring MVC框架之后，如何打印MyBatis的SQL语句](http://blog.csdn.net/hanchao5272/article/details/79253645)
+[MyBatis代码实例系列-10：MyBatis通过PageHelper插件实现分页查询](http://blog.csdn.net/hanchao5272/article/details/79254394)
+
+## 实例SQL记录
+### 1.MyBatis的入门实例：通过纯XML配置
 ```sql
 drop table question;
 create table `question`(
@@ -12,7 +40,7 @@ create table `question`(
 )engine=InnoDB comment='试题' auto_increment=1 default charset=utf8;
 insert into question values(99999,'简答题',100,'你好吗？');
 ```
-## 2.MyBatis通过XML+IDAO的配置方式
+### 2.MyBatis通过XML+IDAO的配置方式
 ```sql
 drop table problem;
 create table `problem`(
@@ -24,7 +52,7 @@ create table `problem`(
 )engine=InnoDB comment='难题' auto_increment=1 default charset=utf8;
 insert into problem values(99999,'题目1',100,'你好吗？');
 ```
-## 3.MyBatis对单表的增删改查
+### 3.MyBatis对单表的增删改查
 ```sql
 drop table topic;
 create table `topic`(
@@ -37,7 +65,7 @@ create table `topic`(
 insert into topic values(99999,'题目1',100,'你好吗？');
 
 ```
-## 4.MyBatis的一对多关联处理
+### 4.MyBatis的一对多关联处理
 ```sql
 drop table person;
 create table `person`(
@@ -63,7 +91,7 @@ insert into experience values(2,1,'南通考古研究院','考古专家');
 insert into experience values(3,1,'海南旅游集团','CEO');
 select * from experience;
 ```
-## 5.MyBatis的多对一关联处理
+### 5.MyBatis的多对一关联处理
 ```sql
 drop table person;
 create table `person`(
@@ -89,7 +117,7 @@ insert into experience values(2,1,'南通考古研究院','考古专家');
 insert into experience values(3,1,'海南旅游集团','CEO');
 select * from experience;
 ```
-## 6.MyBatis的多对多映射处理
+### 6.MyBatis的多对多映射处理
 ```sql
 drop table student;
 create table `student`(
@@ -136,11 +164,4 @@ insert into student_course values(3,3);
 insert into student_course values(3,4);
 insert into student_course values(3,5);
 select * from student_course;
-```
-
-## 7.动态语句
-http://blog.csdn.net/xuanzhangran/article/details/60329357
-```sql
-
-
 ```
