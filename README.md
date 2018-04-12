@@ -16,16 +16,16 @@ CSDN专栏：[MyBatis学习实例](https://blog.csdn.net/column/details/20009.ht
 
 ## 目录
 
-[MyBatis代码实例系列-01：MyBatis简单搭建与入门实例：纯XML方式、IDAO+XML方式](http://blog.csdn.net/hanchao5272/article/details/79184403)
-[MyBatis代码实例系列-02：MyBatis用log4j打印SQL以及MyBatis的事务控制](http://blog.csdn.net/hanchao5272/article/details/79200426)
-[MyBatis代码实例系列-03：MyBatis单张表简单实现增删改查 + log4j + 手动事务控制](http://blog.csdn.net/hanchao5272/article/details/79244310)
-[MyBatis代码实例系列-04：MyBatis多表映射实例（一对多、多对一和多对多）](http://blog.csdn.net/hanchao5272/article/details/79244359)
-[MyBatis代码实例系列-05：Mybatis初步整合Spring + Spring MVC框架，实现Web请求实例](http://blog.csdn.net/hanchao5272/article/details/79247396)
-[MyBatis代码实例系列-06：Mybatis动态SQL标签（一）---if、where、set、trim、choose](http://blog.csdn.net/hanchao5272/article/details/79248416)
-[ MyBatis代码实例系列-07：Mybatis动态SQL标签（二）---bind、foreach和多数据库厂商支持_databaseId](http://blog.csdn.net/hanchao5272/article/details/79250556)
-[MyBatis代码实例系列-08：MyBatisGenerator插件及扩展(中文注释和Mapper重命名为Dao)](http://blog.csdn.net/hanchao5272/article/details/79251828)
-[MyBatis代码实例系列-09：初步整合Spring + Spring MVC框架之后，如何打印MyBatis的SQL语句](http://blog.csdn.net/hanchao5272/article/details/79253645)
-[MyBatis代码实例系列-10：MyBatis通过PageHelper插件实现分页查询](http://blog.csdn.net/hanchao5272/article/details/79254394)
+- [MyBatis代码实例系列-01：MyBatis简单搭建与入门实例：纯XML方式、IDAO+XML方式](http://blog.csdn.net/hanchao5272/article/details/79184403)
+- [MyBatis代码实例系列-02：MyBatis用log4j打印SQL以及MyBatis的事务控制](http://blog.csdn.net/hanchao5272/article/details/79200426)
+- [MyBatis代码实例系列-03：MyBatis单张表简单实现增删改查 + log4j + 手动事务控制](http://blog.csdn.net/hanchao5272/article/details/79244310)
+- [MyBatis代码实例系列-04：MyBatis多表映射实例（一对多、多对一和多对多）](http://blog.csdn.net/hanchao5272/article/details/79244359)
+- [MyBatis代码实例系列-05：Mybatis初步整合Spring + Spring MVC框架，实现Web请求实例](http://blog.csdn.net/hanchao5272/article/details/79247396)
+- [MyBatis代码实例系列-06：Mybatis动态SQL标签（一）---if、where、set、trim、choose](http://blog.csdn.net/hanchao5272/article/details/79248416)
+- [ MyBatis代码实例系列-07：Mybatis动态SQL标签（二）---bind、foreach和多数据库厂商支持_databaseId](http://blog.csdn.net/hanchao5272/article/details/79250556)
+- [MyBatis代码实例系列-08：MyBatisGenerator插件及扩展(中文注释和Mapper重命名为Dao)](http://blog.csdn.net/hanchao5272/article/details/79251828)
+- [MyBatis代码实例系列-09：初步整合Spring + Spring MVC框架之后，如何打印MyBatis的SQL语句](http://blog.csdn.net/hanchao5272/article/details/79253645)
+- [MyBatis代码实例系列-10：MyBatis通过PageHelper插件实现分页查询](http://blog.csdn.net/hanchao5272/article/details/79254394)
 
 ## 实例SQL记录
 ### 1.MyBatis的入门实例：通过纯XML配置
